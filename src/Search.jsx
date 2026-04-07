@@ -1,9 +1,11 @@
-function Search() {
+function Search({ placeholder, id }) {
   return (
     <input
       type="text"
-      placeholder="Search books..."
-      className="mb-4 border rounded-md p-2 w-full"
+      placeholder={placeholder}
+      id={id}
+      name={id}
+      className="border rounded-md p-2 w-full"
     />
   );
 }
