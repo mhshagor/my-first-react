@@ -17,6 +17,13 @@ function CarList({ searchTerm, cars }) {
 
 CarList.propTypes = {
   searchTerm: PropTypes.string.isRequired,
-  cars: PropTypes.array.isRequired,
+  cars: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    brand: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+  })).isRequired,
 };
 export default CarList;

@@ -5,7 +5,6 @@ import CarList from "./CarList";
 import { useState } from "react";
 
 function CarContainer() {
-  const [searchTerm, setSearchTerm] = useState("");
   const carData = [
     {
       id: 1,
@@ -48,14 +47,22 @@ function CarContainer() {
       isPremium: true,
     },
   ];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [cars] = useState(carData);
+  const [showOnlyPremium, setShowOnlyPremium] = useState(false);
+  const filteredCars = showOnlyPremium ? cars.filter(car => car.isPremium) : cars;
   return (
     <div className="container mx-auto p-4">
       <Header title="My Car" />
       <div className="grid grid-cols-3 gap-4 items-center justify-center mb-4">
-        <Search placeholder="Search car..." searchTerm={searchTerm} onSearchTerm={setSearchTerm}/>
-        <Checkbox id="car-checkbox" label="Show Premium Cars" />
+        <Search
+          placeholder="Search car..."
+          searchTerm={searchTerm}
+          onSearchTerm={setSearchTerm}
+        />
+        <Checkbox id="car-checkbox" label="Show Premium Cars" onPremiumCars={ setShowOnlyPremium}/>
       </div>
-      <CarList searchTerm={searchTerm} cars={carData}/>
+      <CarList searchTerm={searchTerm} cars={filteredCars}/>
     </div>
   );
 }
