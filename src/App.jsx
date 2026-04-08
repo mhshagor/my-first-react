@@ -4,7 +4,7 @@ import CarContainer from "./car/CarContainer";
 function App() {
   return (
     <>
-      <CarContainer />
+      {/* <CarContainer /> */}
       <Boimela />
     </>
   );
